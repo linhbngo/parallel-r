@@ -1,0 +1,9 @@
+model {
+  mu ~ dnorm( 0.0, 1.0E-6 )
+  sigma ~ dunif( 0.0, 9.0 )
+  for ( i in 1:n ) {
+    y[ i ] ~ dnorm( mu, tau )
+  }
+  tau <- 1.0 / ( sigma * sigma )
+  y.new ~ dnorm( mu, tau )
+}
